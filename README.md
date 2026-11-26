@@ -60,7 +60,10 @@ Do NOT commit the raw 1600x1600 draft PNG or its metadata JSON (kept at
 
 ## Local verification (2026-11-27, Node v24.22.1)
 
-- `MAKEFUN_OUTPUT_DIR=/tmp/run1 node main.ts` and `...=/tmp/run2 node main.ts` both exit 0.
+- `main.ts` was rewritten by the agent (no longer the kit starter): it reads
+  `entry.png`, checks it is a JPEG/PNG under 1 MiB, writes it to the output
+  directory, then reads it back and confirms the copy is byte-exact.
+- `MAKEFUN_OUTPUT_DIR=/tmp/run3 node main.ts` and `...=/tmp/run4 node main.ts` both exit 0.
 - Both outputs byte-identical: SHA256
   `8769af3315107a1b6b9db7d9a764bc470aef972955c53139a27854e8fe96407a`
   (same hash as the repo's `entry.png`).
